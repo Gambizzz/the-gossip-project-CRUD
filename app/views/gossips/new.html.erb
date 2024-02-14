@@ -13,7 +13,10 @@
   </div>
 
   <div class="form-group">
-    <button type="submit">Créer le gossip</button>
+    <%= f.collection_select :user_id, User.order(:first_name), :id, :first_name %>
   </div>
 
+  <div class="form-group">
+    <button type="submit">Créer le gossip</button>
+  </div>
 <% end %>

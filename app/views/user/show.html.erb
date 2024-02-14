@@ -1,5 +1,9 @@
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
-<p><%= @user.description %></p>
-<p><%= @user.email %></p>
-<p><%= @user.age %></p>
-<p><%= @user.city.name %></p>
+<h1>Prénom : <%= @user.first_name %> <%= @user.last_name %></h1>
+<p>Nom : <%= @user.description %></p>
+<p>Email : <%= @user.email %></p>
+<p>Âge : <%= @user.age %></p>
+<p>Ville : <%= @user.city.name%></p>
+
+<a class="btn btn-outline-secondary btn-sm" role="button" href="<%=city_path(@user.city_id)%>">Voir les gossips de <%=@user.city.name%></a>
+
+

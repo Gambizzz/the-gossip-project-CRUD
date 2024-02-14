@@ -37,7 +37,7 @@ class GossipsController < ApplicationController
 
   private
   def post_params
-    post_params = params.require(:gossip).permit(:title, :content)
+    post_params = params.require(:gossip).permit(:title, :content, :user_id)
   end
   
 end
