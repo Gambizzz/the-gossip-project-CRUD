@@ -55,3 +55,15 @@ end
   pm +=1
   puts "40 messages privés ont été créés !"
 end
+
+users = User.all
+gossips = Gossip.all
+50.times do |c|
+  Comment.create!(
+   content:Faker::Lorem.sentence(word_count: 10),
+   gossip:gossips.sample,
+   user:users.sample
+   )
+ c +=1
+ puts "50 comments ont été créés !"
+end
