@@ -14,24 +14,22 @@
 </div> <br>
 <!-- Jumbotron -->
 
-    <div class="container-fluid">
-      <h2>Voici la liste de tous les gossips :</h2>
-	    <div class="row">
-      <% @ordered_gossips = @gossips.order(:id) %>
-        <% @ordered_gossips.each do |gossip| %>
-          <div class= "col-4 col-sm-4 col-md-4 col-lg-4 mt-5 text-center" > 
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title"><%= gossip.id %> . <%= gossip.title %></h5>
-                <p class="card-text">Auteur : <%= gossip.user.first_name %></p>
-                <a href="<%= gossip_path(gossip.id)%>" class="btn">Voir le gossip</a>
-                #lien edit gossip
-                #lien delete gossip
-              </div>
-            </div>
-          </div>
-        <% end %>
+<div class="container-fluid">
+<h2>Voici la liste de tous les gossips :</h2>
+<div class="row">
+  <% @ordered_gossips = @gossips.order(:id) %>
+  <% @ordered_gossips.each do |gossip| %>
+    <div class= "col-4 col-sm-4 col-md-4 col-lg-4 mt-5 text-center" > 
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= gossip.id %> . <%= gossip.title %></h5>
+          <p class="card-text">Auteur : <%= gossip.user.first_name %></p>
+          <a href="<%= gossip_path(gossip.id)%>" class="btn">Voir le gossip</a>
+        </div>
       </div>
     </div>
+  <% end %>
+</div>
+</div>
   <body>
 </html>

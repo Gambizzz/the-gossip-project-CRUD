@@ -22,12 +22,15 @@ class GossipsController < ApplicationController
 
   def update
     @gossip = Gossip.find(params[:id])
-    @gossip.update(post_params)
-    redirect_to basic_pages_home_path
+    if @gossip.update(post_params)
+      redirect_to basic_pages_home_path
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @gossip = GOSSIP.find(params[:id])
+    @gossip = Gossip.find(params[:id])
     @gossip.destroy
     redirect_to basic_pages_home_path
   end

@@ -1,8 +1,22 @@
 <h1><%= @gossip.title %></h1>
 <p><%= @gossip.content %></p>
-<p><%= @gossip.user %></p>
-<p><%= @gossip.city %></p>
+<p><%= @gossip.user.first_name %> <%= @gossip.user.last_name%></p>
+<p><%= @gossip.user.city.name%></p>
 
+<p>
+  <%= link_to "Voir l'auteur", {controller: "user", action: "show", id: @gossip.user.id}, class: "btn btn-primary mt-3" %>
+</p>
+
+<p>
+  <a href="<%= edit_gossip_path %>" class="btn btn-primary">Modifier le gossip</a>
+</p>
+
+<p>
+<%= link_to "Supprimer le gossip", gossip_path(@gossip), data: {
+  turbo_method: :delete,
+  turbo_confirm: "Are you sure ?"
+} %>
+</p>
 
 <p>
   <a href="<%= basic_pages_home_path %>" class="btn btn-primary">Revenir aux gossips</a>

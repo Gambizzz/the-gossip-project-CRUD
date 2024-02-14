@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'basic_pages/#home'
+  root 'basic_pages#home'
   
   get 'basic_pages/home', to: 'basic_pages#home'
   get 'basic_pages/team', to: 'basic_pages#team'
@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'basic_pages/welcome/:first_name', to: 'basic_pages#welcome'
 
   resources :gossips
+  resources :user
  
 
 
