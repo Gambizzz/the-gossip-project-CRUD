@@ -1,0 +1,37 @@
+<html>
+  <body>
+  <!-- Jumbotron -->
+<div class="p-5 text-center bg-image rounded-3" style="background: #af8070; height: 300px;">
+  <div>
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-white">
+        <h1 class="mb-3">THE GOSSIP PROJECT</h1>
+        <h4 class="mb-3">Bienvenue sur notre super site de potins !</h4> <br>
+        <a href="<%= new_gossip_path %>" class="btn">Créer un gossip</a>
+      </div>
+    </div>
+  </div>
+</div> <br>
+<!-- Jumbotron -->
+
+    <div class="container-fluid">
+      <h2>Voici la liste de tous les gossips :</h2>
+	    <div class="row">
+      <% @ordered_gossips = @gossips.order(:id) %>
+        <% @ordered_gossips.each do |gossip| %>
+          <div class= "col-4 col-sm-4 col-md-4 col-lg-4 mt-5 text-center" > 
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title"><%= gossip.id %> . <%= gossip.title %></h5>
+                <p class="card-text">Auteur : <%= gossip.user.first_name %></p>
+                <a href="<%= gossip_path(gossip.id)%>" class="btn">Voir le gossip</a>
+                #lien edit gossip
+                #lien delete gossip
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <body>
+</html>
