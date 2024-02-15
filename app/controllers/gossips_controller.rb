@@ -15,8 +15,11 @@ class GossipsController < ApplicationController
   end
 
   def create
-    gossip = Gossip.create(post_params)
-    redirect_to gossip_path(gossip.id)
+    @gossip = Gossip.create(post_params)
+    @gossip.update(user: current_user)
+ 
+
+    redirect_to gossip_path(@gossip.id)
   end
 
   def edit
@@ -40,7 +43,7 @@ class GossipsController < ApplicationController
 
   private
   def post_params
-    post_params = params.require(:gossip).permit(:title, :content, :current_user)
+    post_params = params.require(:gossip).permit(:title, :content)
   end
 
   private

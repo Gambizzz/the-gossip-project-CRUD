@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     # on vérifie si l'utilisateur existe bien ET si on arrive à l'authentifier (méthode bcrypt) avec le mot de passe 
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+      log_in(user)
       redirect_to basic_pages_home_path
     else
       render 'new'

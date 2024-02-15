@@ -15,7 +15,15 @@
         <%= label_tag 'Email'%>
         <%= text_field_tag 'email', value = nil%>
       </div>
-    
+
+      <label for="cities"> Choose a city :</label>
+      <form id="cityform">
+      <select id="cities" name="city"> 
+        <% @city.each do |city| %>
+          <option value="<%= city.id %>"><%= city.name %></option>
+        <% end %>                 
+      </select>
+
       <div class="form-group">
         <%= label_tag 'Mot de passe'%>
         <%= password_field_tag 'password', value = nil%>

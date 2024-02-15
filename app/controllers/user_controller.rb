@@ -5,6 +5,7 @@ class UserController < ApplicationController
 
   def new
     @user = User.new
+    @city = City.all
   end
 
   def show
@@ -13,13 +14,15 @@ class UserController < ApplicationController
   end
 
   def create
+    @city = City.all
+    city = City.find(params[:city])
     @user = User.new(
       first_name: params[:first_name],
       last_name: params[:last_name],
       description: params[:description],
       email: params[:email],
       age: params[:age],
-      city_id: params[:city_id],
+      city: city,
       password: params[:password],
       password_confirmation: params[:password_confirmation])
 
