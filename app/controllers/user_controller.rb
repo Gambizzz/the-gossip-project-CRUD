@@ -24,9 +24,9 @@ class UserController < ApplicationController
       password_confirmation: params[:password_confirmation])
 
       if @user.save
-        log_in(@user)
         redirect_to basic_pages_home_path
       else
+        puts @user.errors.full_messages
         render "new"
       end
     end

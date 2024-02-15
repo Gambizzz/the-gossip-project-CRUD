@@ -24,7 +24,7 @@
     </ul>
     
     <a class="nav-item">
-        <% if User.find_by(id: session[:user_id]) %>
+        <% if session[:user_id] %>
           <a class="nav-item"><%= link_to "Log out", session_path(session.id), method: :delete, class: "nav-link btn btn-outline-secondary" %></a>
         <% elsif %>
           <a class="nav-item"><%= link_to "Sign in", new_session_path %></a>
