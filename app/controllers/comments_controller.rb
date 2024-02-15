@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    if @comment.update(params[:comment])
+    if @comment.update(content: params[:content])
       redirect_to basic_pages_home_path
     else
       render :edit
