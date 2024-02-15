@@ -9,16 +9,24 @@
   <%= link_to "Voir l'auteur", {controller: "user", action: "show", id: @gossip.user.id}, class: "btn btn-primary mt-3" %>
 </p>
 
-<p>
-  <a href="<%= edit_gossip_path %>" class="btn btn-primary">Modifier le gossip</a>
-</p>
+<% if current_user == @gossip.user.id %>
+  <p>
+    <a href="<%= edit_gossip_path %>" class="btn btn-primary">Modifier le gossip</a>
+  </p>
 
-<p>
-<%= link_to "Supprimer le gossip", gossip_path(@gossip), data: {
-  turbo_method: :delete,
-  turbo_confirm: "Are you sure ?"
-} %>
-</p>
+  <p>
+  <%= link_to "Supprimer le gossip", gossip_path(@gossip), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure ?"
+  } %>
+  </p>
+<% end %>
+
+
+<% if current_user%>
+  <%= button_to 'Like', gossip_likes_path(@gossip), method: :post, class:"btn btn-outline-info btn-sm" %>
+  <p class="p-2"> <%= @gossip.likes.count %>  <i class="fas fa-heart"></i></p>
+<%end%>
 
 
 <%= form_tag gossip_comments_path(@gossip), action: 'create', method: "post" do %>

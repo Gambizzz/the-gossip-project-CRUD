@@ -6,9 +6,15 @@
     <div class="d-flex justify-content-center align-items-center h-100">
       <div class="text-white">
         <h1 class="mb-3">THE GOSSIP PROJECT</h1>
+
+       <% if session[:current_user] %>
         <h4 class="mb-3">Bienvenue <%= User.find_by(id: session[:user_id]).first_name %>, te voici sur notre super site de potins !</h4> <br>
+      <% else %>
+          <h4 class="mb-3">Bienvenue, te voici sur notre super site de potins !</h4> <br>
+      <% end %>
         <a href="<%= new_gossip_path %>" class="btn">Créer un gossip</a>
       </div>
+      
     </div>
   </div>
 </div> <br>
@@ -24,6 +30,13 @@
         <div class="card-body">
           <h5 class="card-title"><%= gossip.id %> . <%= gossip.title %></h5>
           <p class="card-text">Auteur : <%= gossip.user.first_name %></p>
+          <p class="p-2 text-right"> Commentaires : <%= gossip.comments.count %> <i class="fas fa-heart"></i></p>
+
+          <% if current_user %>
+          <%= button_to 'Like', gossip_likes_path(gossip), method: :post, class:"btn btn-outline-info btn-sm float-right ml-2" %>
+          <p class="p-2 text-right"> <%= gossip.likes.count %> <i class="fas fa-heart"></i></p>
+          <% end %>
+
           <a href="<%= gossip_path(gossip.id)%>" class="btn">Voir le gossip</a>
         </div>
       </div>

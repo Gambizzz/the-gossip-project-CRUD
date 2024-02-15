@@ -4,4 +4,5 @@ class Gossip < ApplicationRecord
   belongs_to :user, optional: true
   has_many :tags
   has_many :comments
+  has_many :likes
 end

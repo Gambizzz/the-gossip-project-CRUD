@@ -1,4 +1,6 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :edit, :create, :update]
+  
   def index
     @gossips = Gossip.all
   end
@@ -38,7 +40,15 @@ class GossipsController < ApplicationController
 
   private
   def post_params
-    post_params = params.require(:gossip).permit(:title, :content, :user_id)
+    post_params = params.require(:gossip).permit(:title, :content, :current_user)
   end
+
+  private
+  def authenticate_user
+    unless current_user
+      redirect_to new_session_path
+    end
+  end
+
   
 end

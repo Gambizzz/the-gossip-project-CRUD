@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :edit, :create, :update]
+  
   def new
     @gossip = Gossip.find(params[:gossip_id]) 
     @comment = Comment.new
@@ -6,8 +8,8 @@ class CommentsController < ApplicationController
 
   def create
     @gossip = Gossip.find(params[:gossip_id])
-    user = User.all.sample
-    @comment = Comment.new(content: params[:content], gossip: @gossip, user: user)
+    
+    @comment = Comment.new(content: params[:content], gossip: @gossip, user: current_user)
     if @comment.save
       redirect_to gossip_path(@gossip.id)
     else
@@ -32,5 +34,12 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     Comment.delete(@comment)
     return redirect_to basic_pages_home_path
+  end
+
+  private
+  def authenticate_user
+    unless current_user
+      redirect_to new_session_path
+    end
   end
 end

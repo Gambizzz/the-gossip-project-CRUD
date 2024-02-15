@@ -9,10 +9,15 @@ Rails.application.routes.draw do
   resources :gossips
   resources :user
   resources :city
+  
   resources :gossips do
     resources :comments
    end
+
   resources :sessions, only:[:new, :create, :destroy]
+  resources :gossips do
+    resources :likes
+   end
  
 
 
