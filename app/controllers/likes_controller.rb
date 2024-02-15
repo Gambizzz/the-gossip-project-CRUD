@@ -4,9 +4,13 @@ class LikesController < ApplicationController
   end
 
   def create
-    gossip = Gossip.find(params[:gossip_id])
-    like = Like.create(user_id: current_user, gossip_id: params[:gossip_id])
-    if like.save
+    @user = current_user.id
+    @gossip = params[:gossip_id]
+    likes = {user_id: @user, gossip_id: @gossip}
+    @like = Like.new(likes)
+
+    @like.save!
+    if @like.save
       redirect_to basic_pages_home_path
     end
   end
