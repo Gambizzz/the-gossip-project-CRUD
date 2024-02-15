@@ -30,14 +30,16 @@
         <div class="card-body">
           <h5 class="card-title"><%= gossip.id %> . <%= gossip.title %></h5>
           <p class="card-text">Auteur : <%= gossip.user.first_name %></p>
-          <p class="p-2 text-right"> Commentaires : <%= gossip.comments.count %> <i class="fas fa-heart"></i></p>
+          <button type="button" class="btn btn-outline-dark btn-sm">
+            Commentaires : <span class="badge text-bg-secondary"><%= gossip.comments.count %></span>
+          </button>
 
           <% if current_user %>
-          <%= button_to 'Like', gossip_likes_path(gossip), method: :post, class:"btn btn-outline-info btn-sm float-right ml-2" %>
-          <p class="p-2 text-right"> <%= gossip.likes.count %> <i class="fas fa-heart"></i></p>
+            <%= button_to 'Like', gossip_likes_path(gossip), method: :post, class:"btn btn-outline-info btn-sm float-right ml-2" %>
+            <p class="p-2 text-right"> <%= gossip.likes.count %> <i class="fas fa-heart"></i></p>
           <% end %>
 
-          <a href="<%= gossip_path(gossip.id)%>" class="btn">Voir le gossip</a>
+          <a href="<%= gossip_path(gossip.id)%>" class="btn btn-outline-dark">Voir le gossip</a>
         </div>
       </div>
     </div>
