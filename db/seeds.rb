@@ -22,7 +22,8 @@ end
     description:Faker::Lorem.sentence(word_count: 20),
     email:Faker::Internet.email,
     age: rand(18..78),
-    city: City.all.sample
+    city: City.all.sample,
+    password: Faker::Lorem.paragraph_by_chars(number: 6)
   )
   u +=1
   puts "10 utilisateurs ont été créés !"

@@ -1,0 +1,36 @@
+    <h1 class="h3 mb-3 fw-normal">INSCRIPTION</h1>
+
+    <%= form_tag url_for(action: 'create'), method: 'post' do %>
+      <div class="form-group">
+        <%= label_tag 'Prénom'%>
+        <%= text_field_tag 'first_name', value = nil%>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag 'Nom'%>
+        <%= text_field_tag 'last_name', value = nil%>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag 'Email'%>
+        <%= text_field_tag 'email', value = nil%>
+      </div>
+    
+      <div class="form-group">
+        <%= label_tag 'Mot de passe'%>
+        <%= password_field_tag 'password', value = nil%>
+      </div>
+    
+      <div class="form-group">
+        <%= label_tag 'Confirmation'%>
+        <%= password_field_tag 'password_confirmation', value = nil%>
+      </div>
+
+      <div class="form-group">
+        <p><%= check_box_tag 'remember_me' %> Se souvenir de moi </p>
+      </div>
+
+      <%= submit_tag "Submit", class: "btn btn-lg btn-primary" %>
+
+      <%= link_to "Déjà inscrit(e) ?", new_session_path %>
+   <% end %>

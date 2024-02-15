@@ -37,7 +37,7 @@
           <p class="card-text">Auteur : <%= comment.user.first_name %></p>
           <p class="card-text">Commentaire : <%= comment.content %></p>
           <%= link_to "Modifier", edit_gossip_comment_path(comment.id), class:"btn btn-primary" %>
-          <%= link_to "Supprimer", gossip_comment_path(comment.id), data: {turbo_method: :delete,turbo_confirm: "Are you sure ?"} %>
+         <%= link_to "Supprimer", gossip_comment_path(comment.id),data: {turbo_method: :delete,turbo_confirm: "Are you sure ?"} %>
         </div>
       </div>
     </div>
