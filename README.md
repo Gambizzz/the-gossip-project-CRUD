@@ -1,24 +1,17 @@
-# README
+Bienvenue dans ta première application Rails qui déchire : The Gossip Project.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ce projet est l'aboutissement d'une semaine entière de travail : ajout des bons controllers, des bonnes views, du front-end.
 
-Things you may want to cover:
+Voici le programme de la semaine :
 
-* Ruby version
+1 - On se consacre aux premières pages de l'application : quelques pages statiques et les pages potins.
 
-* System dependencies
+2 - Création d'un potin
 
-* Configuration
+3 - CRUD complet des potins (avec des routes REST)
 
-* Database creation
+4 - Ajout d'une section commentaires de potins, de likes des potins + gestion d'utilisateurs
 
-* Database initialization
+5 - Identification des potins
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Projet réalisé avec SQl et Ruby/Rails
